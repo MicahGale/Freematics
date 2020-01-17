@@ -1,3 +1,4 @@
+
 /*************************************************************************
 * OBD-II/MEMS/GPS Data Logging Sketch for Freematics ONE
 * Distributed under BSD license
@@ -313,7 +314,14 @@ void loop()
     }
 #endif
     if (one.state & STATE_OBD_READY) {
-        byte pids[]= {PID_RPM, PID_SPEED, PID_THROTTLE, PID_ENGINE_LOAD};
+        byte pids[]= {PID_RPM, 
+                      PID_SPEED,
+                      PID_THROTTLE, 
+                      PID_ENGINE_LOAD, 
+                      PID_ENGINE_TORQUE_DEMANDED, 
+                      PID_ENGINE_FUEL_RATE, 
+                      PID_MAF_FLOW 
+                     };
         one.dataTime = millis();
         for (byte i = 0; i < sizeof(pids) / sizeof(pids[0]); i++) {
           int value;
